@@ -5,13 +5,19 @@
 # Create New Node dialog once the plugin is enabled.
 
 
+
 tool
 extends EditorPlugin
 
+var import_plugin
+
 
 func _enter_tree() -> void:
-	pass
+	import_plugin = preload("res://addons/SDT_Importer/SDT_Import.gd").new()
+	add_import_plugin(import_plugin)
 
 
 func _exit_tree() -> void:
-	pass
+
+	remove_import_plugin(import_plugin)
+	import_plugin = null
